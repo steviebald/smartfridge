@@ -1,6 +1,6 @@
 #!/bin/bash  
 
-timestamp=$(date +%s)
+timestamp=$(date +%T)
 
 cd /home/pi/Desktop/python3/smartfridge/
 git --git-dir /home/pi/Desktop/python3/smartfridge/.git add .
