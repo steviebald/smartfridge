@@ -1,6 +1,6 @@
 #!/bin/bash  
 
-current_date_time = date + "%Y-%m-%d %H:%M:%S";
+current_date_time = date + "%Y-%m-%d %H:%M:%S"
 
 cd /home/pi/Desktop/python3/smartfridge/
 git --git-dir /home/pi/Desktop/python3/smartfridge/.git add .
