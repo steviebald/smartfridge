@@ -18,8 +18,8 @@ temp_external_sensor = "/sys/bus/w1/devices/28-80000002d31a/w1_slave"
 FRIDGE_THRESHOLD = 25.0
 LOGGING_FREQUENCY_SECS = 300
 
-relay = LED(14)
-led = LED(26)
+relay = LED(14) #set up for a Normally Closed (NC) relay so switching it on actually switches the power off
+led = LED(26) #status led
 error = False
 
 def getRaw(sensor):
@@ -75,11 +75,11 @@ while True:
 		print("External temp: " + str(tempExternal))
 		
 		if tempFridge > FRIDGE_THRESHOLD:
-			relay.off()
+			relay.off() #off for a NC relay = on
 			print("fridge on")
 			logData(str(tempFridge), str(tempExternal), "on")
 		else:
-			relay.on()
+			relay.on() #on for a NC relay = off
 			print("fridge off")
 			logData(str(tempFridge), str(tempExternal), "off")
 			
