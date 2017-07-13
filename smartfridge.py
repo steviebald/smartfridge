@@ -56,7 +56,7 @@ def logData(fridgeTemp, externalTemp, onOff):
 	strTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 	strDate = time.strftime('%Y%m%d', time.localtime())
 	row = [strTime, fridgeTemp, externalTemp, onOff]
-	with open("/home/pi/Desktop/python3/smartfridge/"+strDate+".csv", "a") as f:
+	with open("/home/pi/Desktop/python3/smartfridge/data/"+strDate+".csv", "a") as f:
 		w = csv.writer(f)
 		w.writerow(row)
 
