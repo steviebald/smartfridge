@@ -68,12 +68,12 @@ while True:
 	print("Fridge temp: " + str(tempFridge))
 	print("External temp: " + str(tempExternal))
 	
-	if tempFridge = ERROR_TEMP:
+	if tempFridge == ERROR_TEMP:
 		led.blink(0.1,0.5)
 		relay.off() #off for a NC relay = on
 		print("error with fridge temp sensor fridge on")
 		logData(str(tempFridge), str(tempExternal), "error with fridge temp sensor fridge on")	
-	else if tempFridge > FRIDGE_THRESHOLD:
+	elif tempFridge > FRIDGE_THRESHOLD:
 		relay.off() #off for a NC relay = on
 		print("fridge on")
 		logData(str(tempFridge), str(tempExternal), "on")
