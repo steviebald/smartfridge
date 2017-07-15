@@ -149,3 +149,5 @@
 2017-07-15 12:24:15,21.812,20.875,on
 2017-07-15 12:29:15,21.875,21.062,on
 2017-07-15 12:34:15,0.0,0.0,off
+2017-07-15 12:39:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d084/w1_slave
+2017-07-15 12:39:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d31a/w1_slave
