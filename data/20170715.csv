@@ -155,3 +155,5 @@
 2017-07-15 12:44:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d31a/w1_slave
 2017-07-15 12:49:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d084/w1_slave
 2017-07-15 12:49:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d31a/w1_slave
+2017-07-15 12:54:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d084/w1_slave
+2017-07-15 12:54:15,-273.0,-273.0,error reading temperature sensor /sys/bus/w1/devices/28-80000002d31a/w1_slave
