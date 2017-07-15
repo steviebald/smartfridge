@@ -16,7 +16,7 @@ temp_fridge_sensor = "/sys/bus/w1/devices/28-80000002d084/w1_slave"
 temp_external_sensor = "/sys/bus/w1/devices/28-80000002d31a/w1_slave"
 
 FRIDGE_THRESHOLD = 5.0
-LOGGING_FREQUENCY_SECS = 300
+LOGGING_FREQUENCY_SECS = 5
 ERROR_TEMP = -273.0 #temperature to return if there is an error
 
 relay = LED(14) #set up for a Normally Closed (NC) relay so switching it on actually switches the power off
