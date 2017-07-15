@@ -15,7 +15,7 @@ os.system('modprobe w1-therm')
 temp_fridge_sensor = "/sys/bus/w1/devices/28-80000002d084/w1_slave"
 temp_external_sensor = "/sys/bus/w1/devices/28-80000002d31a/w1_slave"
 
-FRIDGE_THRESHOLD = 21.0
+FRIDGE_THRESHOLD = 5.0
 LOGGING_FREQUENCY_SECS = 300
 
 relay = LED(14) #set up for a Normally Closed (NC) relay so switching it on actually switches the power off
