@@ -82,5 +82,5 @@ while True:
 		print("fridge off")
 		logData(str(tempFridge), str(tempExternal), "off")
 			
-	#sleep(LOGGING_FREQUENCY_SECS)
+	sleep(LOGGING_FREQUENCY_SECS)
 
