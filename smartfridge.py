@@ -69,7 +69,6 @@ while True:
 	fridgeThreshold = getFridgeTempThreshold()
 	tempFridge = getTemperature(temp_fridge_sensor)
 	tempExternal = getTemperature(temp_external_sensor)
-	print("fridgeThreshold="+ fridgeThreshold)
 
 	led.on()
 	print("Fridge temp: " + str(tempFridge))
