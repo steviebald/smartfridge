@@ -60,7 +60,7 @@ def logData(fridgeThreshold, fridgeTemp, externalTemp, onOff):
 		w.writerow(row)
 #check if current time is in any of the 2 zones else return default
 def getFridgeTempThreshold():
-	config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
+	#config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
 	temp = ""
 	
 	start1 = datetime.strptime(config["zone1"]["start"], "%H:%M:%S").time()
@@ -93,6 +93,9 @@ def time_in_range(start, end, x):
 #main code
 
 while True:
+        config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
+
+	loggingFrequency = int(config["frequencysecs"])
 	fridgeThreshold = getFridgeTempThreshold()
 	tempFridge = getTemperature(temp_fridge_sensor)
 	tempExternal = getTemperature(temp_external_sensor)
