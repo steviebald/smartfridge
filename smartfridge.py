@@ -16,7 +16,6 @@ os.system('modprobe w1-therm')
 temp_fridge_sensor = "/sys/bus/w1/devices/28-80000002d084/w1_slave"
 temp_external_sensor = "/sys/bus/w1/devices/28-80000002d31a/w1_slave"
 
-FRIDGE_THRESHOLD = 5.0
 LOGGING_FREQUENCY_SECS = 300
 ERROR_TEMP = -273.0 #temperature to return if there is an error
 
@@ -51,22 +50,26 @@ def getTemperature(sensor):
 	
 	return temp_c
 		
-def logData(fridgeTemp, externalTemp, onOff):
+def logData(fridgeThreshold, fridgeTemp, externalTemp, onOff):
 	strTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 	strDate = time.strftime('%Y%m%d', time.localtime())
-	row = [strTime, fridgeTemp, externalTemp, onOff]
+	row = [strTime, fridgeThreshold, fridgeTemp, externalTemp, onOff]
 	with open("/home/pi/Desktop/python3/smartfridge/data/"+strDate+".csv", "a") as f:
 		w = csv.writer(f)
 		w.writerow(row)
 
-#main code
-config = yaml.load(file('config.yml', 'r'))
-print(config)
-while True:
+def getFridgeTempThreshold():
+	config = yaml.load(file('config.yml', 'r'))
+	print(config)
+	return float(config["defaultTemp"])
 	
+#main code
+
+while True:
+	fridgeThreshold = getFridgeTempThreshold()
 	tempFridge = getTemperature(temp_fridge_sensor)
 	tempExternal = getTemperature(temp_external_sensor)
-	
+	print("fridgeThreshold="+ fridgeThreshold)
 
 	led.on()
 	print("Fridge temp: " + str(tempFridge))
@@ -76,15 +79,15 @@ while True:
 		led.blink(0.1,0.5)
 		relay.off() #off for a NC relay = on
 		print("error with fridge temp sensor fridge on")
-		logData(str(tempFridge), str(tempExternal), "error with fridge temp sensor fridge on")	
-	elif tempFridge > FRIDGE_THRESHOLD:
+		logData(fridgeThreshold, str(tempFridge), str(tempExternal), "error with fridge temp sensor fridge on")	
+	elif tempFridge > fridgeThreshold:
 		relay.off() #off for a NC relay = on
 		print("fridge on")
-		logData(str(tempFridge), str(tempExternal), "on")
+		logData(fridgeThreshold, str(tempFridge), str(tempExternal), "on")
 	else:
 		relay.on() #on for a NC relay = off
 		print("fridge off")
-		logData(str(tempFridge), str(tempExternal), "off")
+		logData(fridgeThreshold, str(tempFridge), str(tempExternal), "off")
 			
 	sleep(LOGGING_FREQUENCY_SECS)
 
