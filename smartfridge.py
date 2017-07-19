@@ -68,10 +68,10 @@ def getFridgeTempThreshold():
 	start2 = datetime.strptime(config["zone2"]["start"], "%H:%M:%S")
 	end2 = datetime.strptime(config["zone2"]["end"], "%H:%M:%S")
 	
-	if (time_in_range(start1, end1, datetime.now().time())):
+	if (time_in_range(start1, end1, datetime.now().datetime())):
 		temp = config["zone1"]["temp"]
 		print("time is in zone 1")
-	elif (time_in_range(start2, end2, datetime.now().time())):
+	elif (time_in_range(start2, end2, datetime.now().datetime())):
 		temp = config["zone2"]["temp"]
 		print("time is in zone 2")
 	else:
