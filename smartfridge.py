@@ -17,7 +17,6 @@ os.system('modprobe w1-therm')
 temp_fridge_sensor = "/sys/bus/w1/devices/28-80000002d084/w1_slave"
 temp_external_sensor = "/sys/bus/w1/devices/28-80000002d31a/w1_slave"
 
-LOGGING_FREQUENCY_SECS = 300
 ERROR_TEMP = -273.0 #temperature to return if there is an error
 
 relay = LED(14) #set up for a Normally Closed (NC) relay so switching it on actually switches the power off
@@ -95,7 +94,7 @@ def time_in_range(start, end, x):
 while True:
         config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
 
-	loggingFrequency = int(config["frequencysecs"])
+	frequencySecs = int(config["frequencysecs"])
 	fridgeThreshold = getFridgeTempThreshold()
 	tempFridge = getTemperature(temp_fridge_sensor)
 	tempExternal = getTemperature(temp_external_sensor)
@@ -119,5 +118,5 @@ while True:
 		print("fridge off")
 		logData(fridgeThreshold, str(tempFridge), str(tempExternal), "off")
 			
-	sleep(LOGGING_FREQUENCY_SECS)
+	sleep(frequencySecs)
 
