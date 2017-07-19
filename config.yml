@@ -1,0 +1,9 @@
+defaulttemp: 5.0
+zone1:
+  start: 20:00:00
+  end: 01:00:00
+  temp: 20.0
+zone2:
+  start: 01:00:00
+  end: 06:00:00
+  temp: 10.0
