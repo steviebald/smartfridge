@@ -59,7 +59,7 @@ def logData(fridgeThreshold, fridgeTemp, externalTemp, onOff):
 		w.writerow(row)
 
 def getFridgeTempThreshold():
-	config = yaml.load(file('config.yml', 'r'))
+	config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
 	print(config)
 	return float(config["defaulttemp"])
 	
