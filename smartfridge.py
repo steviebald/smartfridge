@@ -8,6 +8,7 @@ from time import sleep
 import os
 import csv
 import yaml
+from datetime import datetime
 
 #load temperature drivers
 os.system('modprobe w1-gpio')
@@ -57,12 +58,35 @@ def logData(fridgeThreshold, fridgeTemp, externalTemp, onOff):
 	with open("/home/pi/Desktop/python3/smartfridge/data/"+strDate+".csv", "a") as f:
 		w = csv.writer(f)
 		w.writerow(row)
-
+#check if current time is in any of the 2 zones else return default
 def getFridgeTempThreshold():
 	config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
-	print(config)
-	return float(config["defaulttemp"])
+	temp = ""
 	
+	start1 = datetime.strptime(config["zone1"]["start"], "%H:%M:%S")
+	end1 = datetime.strptime(config["zone1"]["end"], "%H:%M:%S")
+	start2 = datetime.strptime(config["zone2"]["start"], "%H:%M:%S")
+	end2 = datetime.strptime(config["zone2"]["end"], "%H:%M:%S")
+	
+	if (time_in_range(start1, end1, datetime.now().time())):
+		temp = config["zone1"]["temp"]
+		print("time is in zone 1")
+	elif (time_in_range(start2, end2, datetime.now().time())):
+		temp = config["zone2"]["temp"]
+		print("time is in zone 2")
+	else
+		temp = config["defaulttemp"]
+		print("time is not in a zone, using default")
+	
+	return float(temp)
+	
+def time_in_range(start, end, x):
+    """Return true if x is in the range [start, end]"""
+    if start <= end:
+        return start <= x <= end
+    else:
+        return start <= x or x <= end
+
 #main code
 
 while True:
