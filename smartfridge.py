@@ -58,6 +58,9 @@ def logData(fridgeTemp, externalTemp, onOff):
 		w = csv.writer(f)
 		w.writerow(row)
 
+#main code
+config = yaml.load(file('config.yml', 'r'))
+print(config)
 while True:
 	
 	tempFridge = getTemperature(temp_fridge_sensor)
