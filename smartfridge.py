@@ -7,6 +7,7 @@ import time
 from time import sleep
 import os
 import csv
+import yaml
 
 #load temperature drivers
 os.system('modprobe w1-gpio')
