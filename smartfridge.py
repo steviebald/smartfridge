@@ -61,7 +61,7 @@ def logData(fridgeThreshold, fridgeTemp, externalTemp, onOff):
 def getFridgeTempThreshold():
 	config = yaml.load(file('config.yml', 'r'))
 	print(config)
-	return float(config["defaultTemp"])
+	return float(config["defaulttemp"])
 	
 #main code
 
