@@ -63,15 +63,15 @@ def getFridgeTempThreshold():
 	config = yaml.load(file('/home/pi/Desktop/python3/smartfridge/config.yml', 'r'))
 	temp = ""
 	
-	start1 = datetime.strptime(config["zone1"]["start"], "%H:%M:%S")
-	end1 = datetime.strptime(config["zone1"]["end"], "%H:%M:%S")
-	start2 = datetime.strptime(config["zone2"]["start"], "%H:%M:%S")
-	end2 = datetime.strptime(config["zone2"]["end"], "%H:%M:%S")
+	start1 = datetime.strptime(config["zone1"]["start"], "%H:%M:%S").time()
+	end1 = datetime.strptime(config["zone1"]["end"], "%H:%M:%S").time()
+	start2 = datetime.strptime(config["zone2"]["start"], "%H:%M:%S").time()
+	end2 = datetime.strptime(config["zone2"]["end"], "%H:%M:%S").time()
 	
-	if (time_in_range(start1, end1, datetime.now())):
+	if (time_in_range(start1, end1, datetime.now().time())):
 		temp = config["zone1"]["temp"]
 		print("time is in zone 1")
-	elif (time_in_range(start2, end2, datetime.now())):
+	elif (time_in_range(start2, end2, datetime.now().time())):
 		temp = config["zone2"]["temp"]
 		print("time is in zone 2")
 	else:
