@@ -71,6 +71,7 @@ while True:
 	tempExternal = getTemperature(temp_external_sensor)
 
 	led.on()
+	print("Threshold: " + str(fridgeThreshold))
 	print("Fridge temp: " + str(tempFridge))
 	print("External temp: " + str(tempExternal))
 	
