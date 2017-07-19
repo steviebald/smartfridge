@@ -1,5 +1,5 @@
-defaulttemp: 25.1
-frequencysecs: 10
+defaulttemp: 5.1
+frequencysecs: 300
 zone1:
   start: "20:00:00"
   end: "23:59:59"
