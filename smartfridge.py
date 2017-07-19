@@ -74,7 +74,7 @@ def getFridgeTempThreshold():
 	elif (time_in_range(start2, end2, datetime.now().time())):
 		temp = config["zone2"]["temp"]
 		print("time is in zone 2")
-	else
+	else:
 		temp = config["defaulttemp"]
 		print("time is not in a zone, using default")
 	
